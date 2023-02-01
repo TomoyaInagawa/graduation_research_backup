@@ -17,6 +17,7 @@
 
         <div class="list05">
             <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
+            <img src="{{ val.pic1.url }}" width="390" height="200"></img>
         </div>
 
     {% endfor %}
