@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ふらっとナビ/(店){% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/shop.css' %}" rel="stylesheet" />
+<link href="{% static 'css/gourmet_images.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+
+<div class="shosai">
+
+    <div class="shosai_name">
+    <p><span>{{object.place.name}}</span></p>
+    </div>
+
+    <div class="hscroll">
+        <ul>
+            <li><img src="{{ object.pic1.url }}"></li>
+            {% if object.pic2 %}
+            <li><img src="{{ object.pic2.url }}"></li>
+            {% endif %}
+            {% if object.pic3 %}
+            <li><img src="{{ object.pic3.url }}"></li>
+            {% endif %}
+            {% if object.pic4 %}
+            <li><img src="{{ object.pic4.url }}"></li>
+            {% endif %}
+            {% if object.pic5 %}
+            <li><img src="{{ object.pic5.url }}"></li>
+            {% endif %}
+        </ul>
+        <span class="arrow left">  
+        </span><span class="arrow right"></span>
+    </div>
+
+    <div class="shosai01">
+
+        <div class="shosai_location">
+        📍{{object.place.location}}
+        </div>
+
+        <div class="shosai_call">
+        ☎{{object.place.call}}
+        </div>
+
+        <div class="shosai_openingHours">
+        🕘{{object.place.openingHours}}  ~  {{object.place.endingHours}}
+        </div>
+
+        <div class="shosai_regularHoliday">
+        📅 定休日 {{object.place.regularHoliday}}
+        </div>
+
+        <div class="shosai_url">
+        🔗<a href="{{object.place.url}}">{{object.place.url}}</a>
+        </div>
+
+        <div class="shosai_explanation">
+            {{object.place.explanation}}
+        </div>
+
+        <div class="parent1">
+            <button class="item"><a href="{% url 'graduation:shop' %}">戻る</a></button>
+        </div>
+    </div>
+
+    <!-- <div class="shosai_district">
+        {{object.place.district}}
+    </div>
+
+    <div class="shosai_furigana">
+        {{object.place.furigana}}
+    </div> -->
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/images.js' %}"></script>
+{% endblock %}

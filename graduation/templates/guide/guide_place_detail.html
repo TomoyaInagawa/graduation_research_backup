@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースの場所詳細{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<div style="display: flex;" class="fn4">
+
+    <div class="place_detail place_box bg6">
+
+        <div class="place_upper">
+            <div class="place_photo udcenter">
+                {% if object.shopuser.pic1 %}
+                    <img src="{{ object.shopuser.pic1.url }}">
+                {% elif object.touristArea.picture %}
+                    <img src="{{ object.touristArea.picture.url }}">
+                {% else %}
+                    No Data
+                {% endif %}
+            </div>
+            <div class="place_namedishi">
+
+                <div style="display: flex; height: 50%; padding-left: 10%;">
+                    <div class="place_name udcenter">{{ object.name }}</div>
+                    <div style="margin-left: 5%;" class="udcenter">
+                        {% if favorite %}
+                            <button class="favorite_button"><a href="{% url 'graduation:guide_place_favorite' place.pk %}" style="text-decoration: none;">済</a></button>
+                        {% else %}
+                            <button class="favorite_button"><a href="{% url 'graduation:guide_place_favorite' place.pk %}" style="text-decoration: none;">☆</a></button>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div style="display: flex; height: 50%; padding-top: 5%;">
+                    <div style="margin-left: 5%;" class="udcenter">📍</div>
+                    <div class="place_dishi udcenter">{{ object.location }}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="place_downner">
+            　情報：
+            <div>☎　{{ object.call }}</div>
+            <div>⌚　{{ object.openingHours }}~{{ object.endingHours }}</div>
+            <div>📅　{{ object.regularHoliday }}</div>
+            <div class="place_url">⤴　<a href="{{ object.url }}" style="text-decoration: none;">{{ object.url }}</a></div>
+        </div>
+
+        <div class="place_exp">{{ object.explanation }}</div>
+
+    </div>
+    
+    <div class="map place_box bg6">マップ(未実装)</div>
+    
+</div>
+
+<a class="a_button back_button" href="#">戻る</a>
+{% endblock %}
+

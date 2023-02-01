@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}検索結果{% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<link href="{% static 'css/gourmet_images.css' %}" rel="stylesheet" />
+<link href="{% static 'css/gourmet_detail.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block bread %}
+<!-- パンくずリスト -->
+<nav>
+    <ol>
+        <a href="{% url 'graduation:index' %}">トップページ</a>
+        >
+        <a href="{% url 'graduation:gourmet' %}">グルメ</a>
+        >
+        <a href="{% url 'graduation:gourmet_search' %}">グルメ検索結果</a>
+        >
+        <a href="{% url 'graduation:gourmet_detail' object.pk %}">詳細画面</a>
+    </ol>
+</nav>
+<!-- パンくずリスト -->
+{% endblock %}
+
+{% block contents %}
+<h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;">{{ object.name }}</h1>
+
+<div class="border">
+<div class="hscroll">
+    <ul>
+        <li><img src="{{ object.pic1.url }}" width="600px" height="600px"></li>
+        {% if object.pic2 %}
+        <li><img src="{{ object.pic2.url }}" width="600px" height="600px"></li>
+        {% endif %}
+        {% if object.pic3 %}
+        <li><img src="{{ object.pic3.url }}" width="600px" height="600px"></li>
+        {% endif %}
+        {% if object.pic4 %}
+        <li><img src="{{ object.pic4.url }}" width="600px" height="600px"></li>
+        {% endif %}
+        {% if object.pic5 %}
+        <li><img src="{{ object.pic5.url }}" width="600px" height="600px"></li>
+        {% endif %}
+    </ul>
+    <span class="arrow left"></span>
+    <span class="arrow right"></span>
+</div>
+
+<p class="text-primary mb-3 genre_css">ジャンル</p>
+<h2 class="text-primary mb-3 category_css">{{ object.category }}</h2>
+<p class="text-primary mb-3 explanation_css">{{ object.explanation }}</p>
+<div style="text-align: center; margin: 20 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet_search' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/images.js' %}"></script>
+{% endblock %}

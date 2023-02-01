@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Leafletを利用した地図アプリ／GPSエミュレータ</title>
+  <!-- 参考：https://ktgis.net/service/leafletlearn/index.html -->
+  <!-- リファレンス：https://leafletjs.com/reference-1.3.4.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+</head>
+
+<body onload="init()">
+  <div id="mapcontainer" style="width:600px;height:600px"></div>
+  <table border="1">
+    <tr>
+      <th>名前</th>
+      <th>緯度</th>
+      <th>経度</th>
+    </tr>
+    <tr id="aaaaa">
+      <td name="name">Aさん</td>
+      <td><input name="lat" type="text" value="35.905" disabled></td>
+      <td><input name="lng" type="text" value="139.62" disabled></td>
+    </tr>
+    <tr id="bbbbb">
+      <td name="name">Bさん</td>
+      <td><input name="lat" type="text" value="35.905" disabled></td>
+      <td><input name="lng" type="text" value="139.64" disabled></td>
+    </tr>
+    <tr id="ccccc">
+      <td name="name">Cさん</td>
+      <td><input name="lat" type="text" value="35.925" disabled></td>
+      <td><input name="lng" type="text" value="139.64" disabled></td>
+    </tr>
+    <tr id="ddddd">
+      <td name="name">Dさん</td>
+      <td><input name="lat" type="text" value="35.89" disabled></td>
+      <td><input name="lng" type="text" value="139.61" disabled></td>
+    </tr>
+  </table>
+</body>
+
+</html>

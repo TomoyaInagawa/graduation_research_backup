@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}グルメ{% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<link href="{% static 'css/gourmet_style.css' %}" rel="stylesheet" />
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<!-- <link href="{% static 'css/cssファイル' %}" rel="stylesheet" /> -->
+{% endblock %}
+
+{% block bread %}
+<!-- パンくずリスト -->
+<nav>
+    <ol>
+        <a href="{% url 'graduation:index' %}">トップページ</a>
+        >
+        <a href="{% url 'graduation:gourmet' %}">グルメ</a>
+    </ol>
+</nav>
+<!-- パンくずリスト -->
+{% endblock %}
+
+{% block contents %}
+<!-- ここにページの機能を追加していく -->
+<!-- 検索フォーム -->
+<br>
+<div class="parent">
+    <form style="text-align:center" action="{% url 'graduation:gourmet_search' %}" method="post">
+        {% csrf_token %}
+        <input type="search" name="search" placeholder="キーワードを入力" size="40">
+    <ul class="pagination" style="margin: 20 auto;">
+        <div class="item text-primary mb-3">
+            <input type="radio" id="chikuname" name="chiku" value="すべて" />
+            <label for="chikuname"><b>すべて</b></label>
+        </div>
+        <div class="item text-primary mb-3">
+            <input type="radio" id="chikuname" name="chiku" value="和食" />
+            <label for="chikuname"><b>和食</b></label>
+        </div>
+        <div class="item text-primary mb-3">
+            <input type="radio" id="chikuname" name="chiku" value="洋食" />
+            <label for="chikuname"><b>洋食</b></label>
+        </div>
+        <div class="item text-primary mb-3">
+            <input type="radio" id="chikuname" name="chiku" value="中華" />
+            <label for="chikuname"><b>中華</b></label>
+        </div>
+    </ul>
+    <button class="btn btn-secondary mb-3" style="border:none" type="submit"><b>検索</b></button></form>
+</div>
+
+ <!-- 検索フォーム -->
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}会員ページ{% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<!-- <link href="{% static 'css/cssファイル' %}" rel="stylesheet" /> -->
+{% endblock %}
+
+{% block bread %}
+<nav>
+    <ol>
+        <a href="{% url 'graduation:index' %}">トップページ</a>
+        >
+        <a href="{% url 'graduation:account' %}">アカウント(会員ページ)</a>
+    </ol>
+</nav>
+{% endblock %}
+
+{% block contents %}
+<!-- ここにページの機能を追加していく -->
+<h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">会員ページ</h1>
+<div class="account-flex">
+  <div>
+    <h2 class="text-primary mb-3" style="margin: 30 auto;">アカウント</h2>
+    <p class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'account_logout' %}">サインアウト</a></p>
+    <p class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'account_reset_password' %}">パスワード変更</a></p>
+  </div>
+  <div>
+    <h2 class="text-primary mb-3" style="margin: 30 auto;"2>お気に入り</h2>
+    <p class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#">ガイドコース</a></p>
+    <p class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#">店</a></p>
+  </div>
+</div>
+
+<style>
+.account-flex{
+  display: flex;
+  text-align: center;
+}
+.account-flex div{
+  margin-right: auto;
+  margin-left: auto;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}ふらっとナビ/(店){% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block bread %}
+<!-- パンくずリスト -->
+<nav>
+    <ol>
+        <a href="{% url 'graduation:index' %}">トップページ</a>
+        >
+        <a href="{% url 'graduation:shop' %}">店</a>
+    </ol>
+</nav>
+<!-- パンくずリスト -->
+{% endblock %}
+
+{% block contents %}
+
+<br>
+<form action="{% url 'graduation:shop_list' %}" method="post">
+<div class="parent">
+        {% csrf_token %}
+        <input type="search" name="search" placeholder="キーワードを入力">
+        <input type="submit" name="submit" value="検索">
+</div>
+<br>
+</form>
+
+<br>
+<form action="{% url 'graduation:shop_list' %}" method="post">
+    <div class="parent">
+        <div class="pagination">
+
+            <div class="item" style="font-size: 30;">ジャンル</div>
+
+            <div class="item">
+                {% csrf_token %}
+                <label for="chikuname" style="font-size: 30;">飲食店</label>
+                <select name="genre" class="kensaku2">
+                    <option value="洋食">
+                        洋食
+                    </option>
+                    <option value="和食">
+                        和食
+                    </option>
+                </select>
+            </div>
+            <div class="kensaku1">
+                <input type="submit" name="submit" value="検索" style="font-size: 30;">
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}
+

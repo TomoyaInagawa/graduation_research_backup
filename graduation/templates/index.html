@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}トップページ{% endblock %}
+
+{% block head %}
+<!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+<link href="{% static 'css/index.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block bread %}
+<nav>
+    <ol>
+        <a href="{% url 'graduation:index' %}">トップページ</a>
+    </ol>
+</nav>
+
+{% endblock %}
+
+{% block contents %}
+<!-- ここにページの機能を追加していく -->
+<ul class="slider">
+    <li><img src="{% static 'assets/img/冬のあったかすいぞくかん.jpg' %}"></li>
+    <li><img src="{% static 'assets/img/清水寺.jpg' %}"></li>
+    <li><img src="{% static 'assets/img/桃山城.jpg' %}"></li>
+    <li><img src="{% static 'assets/img/福知山城.jpg' %}"></li>
+    <li><img src="{% static 'assets/img/夜景.jpg' %}"></li>
+</ul>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

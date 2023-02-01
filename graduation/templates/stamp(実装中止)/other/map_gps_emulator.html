@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>GPSエミュレータ</title>
+  <!-- 参考：https://ktgis.net/service/leafletlearn/index.html -->
+  <!-- 参考：https://business.mapfan.com/blog/detail/1571 -->
+  <!-- リファレンス：https://leafletjs.com/reference-1.3.4.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.0/dist/leaflet.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+  <script>
+    // 現在位置を設定
+    var current_point = [35.9097, 139.62474];
+
+    // マーカー一覧保持用の連想配列
+    var markers = {};
+
+    // 地図本体
+    var map;
+
+    // マーカーを追加する処理
+    // @param map:追加先の地図, marksers:追加先のマーカー一覧, id:マーカーの識別子
+    //        lat,lang:緯度経度, name:ツールチップに表示する内容
+    function addMarker(map, markers, id, lat, lng, name) {
+      // idをキーとしてマーカー一覧にマーカーを追加
+      markers[id] = L.marker([lat, lng], { draggable: true }) // draggable:ドラッグ可能
+        .bindTooltip(name, { permanent: true, className: 'movableTT' }) // ツールチップで名称を表示
+        .on("dragend", onDragend);  // ドラッグ後に実行する関数を指定
+      // idそのものもフィールドとして持たせる
+      markers[id].id = id;
+
+      // 今回は使わないが下記形式で任意のデータを持たせることが可能
+      // 値は引数から与えるようにすること
+      // それぞれmarkers[id].data.x, markers[id].data.y[i]のように参照する
+      markers[id].data = { x: "hoge", y: [10, 20, 30] };
+
+      // マップにマーカーを追加
+      markers[id].addTo(map);
+    }
+
+    // 位置情報更新完了時に実行する処理
+    function onDragend(e) {
+      var new_point = this.getLatLng()
+      // 自マーカーのidから要素を取得し、該当要素内のinput要素をname属性で検索、value属性に緯度経度を設定
+      $("#" + this.id).find("input[name='lat']").val(new_point.lat);
+      $("#" + this.id).find("input[name='lng']").val(new_point.lng);
+
+      // 更新完了時の任意の処理
+      console.log("update_latlng:" + this.id + ", " + new_point.lat + ", " + new_point.lng);
+    }
+
+    $(function () {
+      // チェックボックスが変更されたときの処理
+      $("input[name='active']").change(function () {
+        // 該当チェックボックスの親要素を取得
+        var p = $(this).parents("tr")
+        // 親要素から各情報を取得
+        var id = p.attr("id");
+        var lat = p.find("input[name='lat']").val();
+        var lng = p.find("input[name='lng']").val();
+        var name = p.find("[name='name']").html();
+
+        if ($(this).prop("checked")) {
+          // チェックが入ったとき
+          addMarker(map, markers, id, lat, lng, name);
+          // チェックが入った時の任意の処理
+          console.log("activate:" + id + ", " + lat + ", " + lng);
+        } else {
+          // チェックが外されたとき
+          map.removeLayer(markers[id]);
+          // チェックが外された時の任意の処理
+          console.log("deactivate:" + id);
+        }
+      });
+    });
+
+    // 地図の初期化処理
+    function init() {
+      // 地図に表示するcircleオブジェクトを作成
+      var circle = L.circle(current_point, { radius: 2000, color: "#FF5555", fill: false, weight: 3 });
+
+      // 地図を表示するdiv要素のidを設定,地図の中心とズームレベルと初期表示するレイヤを指定
+      map = L.map('mapcontainer', {
+        center: current_point,
+        zoom: 14,
+        layers: [circle]
+      });
+
+      // 表示するタイルレイヤのURLとAttributionコントロールの記述を設定して、地図に追加する
+      L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+        attribution: '© 国土地理院'
+      }).addTo(map);
+
+      // circleオブジェクトのコントロールを地図に追加
+      L.control.layers(null, { '半径2kmの円（赤）': circle }, { collapsed: false }).addTo(map);
+
+      // 現在位置のマーカーを地図に追加、ツールチップを表示
+      // ツールチップにはHTMLタグを指定できる
+      L.marker(current_point, { draggable: false })
+        .bindTooltip(
+          "現在位置<br><a href='https://school.o-hara.ac.jp/omiya/' target='_blank'>大原学園大宮校</a>",
+          { permanent: true, className: 'currentTT' }
+        ).addTo(map);
+
+      // テーブルからマーカーを取得し地図に追加する関数
+      function _addMarker(map, markers, id){
+        // テーブルからマーカー情報を取得
+        lat = $("#"+id +" td input[name='lat']").val();
+        lng = $("#"+id +" td input[name='lng']").val();
+        name= $("#"+id +" td[name='name']").html();
+        // 操作可能マーカーを地図に追加
+        addMarker(map, markers, id, lat, lng, name);
+      }
+
+      // 特定のマーカーを地図に追加
+      _addMarker(map, markers, "aaaaa");
+      _addMarker(map, markers, "bbbbb");
+      _addMarker(map, markers, "ddddd");
+    }
+  </script>
+  <style>
+    /* 現在位置ツールチップ */
+    .currentTT {
+      background-color: pink;
+
+      /* ツールチップのリンクをクリックできるようにする　*/
+      pointer-events: all;
+    }
+
+    /* 移動可能マーカーツールチップ */
+    .movableTT {
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body onload="init()">
+  <div id="mapcontainer" style="width:600px;height:600px"></div>
+  <table border="1">
+    <tr>
+      <th>名前</th>
+      <th>緯度</th>
+      <th>経度</th>
+      <th>アクティブ</th>
+    </tr>
+    <tr id="aaaaa">
+      <td name="name">Aさん</td>
+      <td><input name="lat" type="text" value="35.905" disabled></td>
+      <td><input name="lng" type="text" value="139.62" disabled></td>
+      <td><input name="active" type="checkbox" checked></td>
+    </tr>
+    <tr id="bbbbb">
+      <td name="name">Bさん</td>
+      <td><input name="lat" type="text" value="35.905" disabled></td>
+      <td><input name="lng" type="text" value="139.64" disabled></td>
+      <td><input name="active" type="checkbox" checked></td>
+    </tr>
+    <tr id="ccccc">
+      <td name="name">Cさん</td>
+      <td><input name="lat" type="text" value="35.925" disabled></td>
+      <td><input name="lng" type="text" value="139.62" disabled></td>
+      <td><input name="active" type="checkbox"></td>
+    </tr>
+    <tr id="ddddd">
+      <td name="name">Dさん</td>
+      <td><input name="lat" type="text" value="35.89" disabled></td>
+      <td><input name="lng" type="text" value="139.61" disabled></td>
+      <td><input name="active" type="checkbox" checked></td>
+    </tr>
+  </table>
+</body>
+
+</html>

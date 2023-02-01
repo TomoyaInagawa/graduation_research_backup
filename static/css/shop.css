@@ -1,0 +1,72 @@
+.shosai {
+    /* background-color: rgb(0, 255, 34); */
+    top: 50px;
+    left: 40px;
+    position:relative;
+}
+
+.shosai01{
+    /* top: 5px; */
+    left: 500px;
+    position:relative;
+    line-height: 3.5em;
+    width: 170.4ex; 
+    
+}
+
+.shosai_name{
+    font-size: 50;
+    /* background-color: rgb(240, 243, 235); */
+}
+p span{
+	border: solid 2px #454545;
+    background-color: rgb(230, 223, 214);
+}
+
+.shosai_explanation{
+    font-size: 27;
+    display: inline-block;
+	border: solid 1px #ebf3cf;
+}
+
+.shosai_location{
+    font-size:27;
+    text-decoration:underline;
+}
+
+.shosai_call{
+    font-size: 27;
+    text-decoration:underline;
+}
+
+.shosai_openingHours{
+    font-size: 27;
+    text-decoration:underline;
+}
+
+.shosai_regularHoliday{
+    font-size: 27;
+    text-decoration:underline;
+}
+
+.shosai_url{
+    font-size: 27;
+    text-decoration:underline;
+}
+
+.shosai_district{
+    font-size: 27;
+}
+
+.shosai_furigana{
+    font-size: 20;
+}
+
+.kensaku1{
+    top: 100px;
+    left: 100px;
+}
+
+.kensaku2{
+    font-size: 30;
+}

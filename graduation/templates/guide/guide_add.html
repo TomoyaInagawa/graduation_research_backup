@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースの登録{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+
+<script>
+    // ここだけ修正
+    // 参照元クラスのForeignKeyで指定したrelated_nameを記述
+    // 指定してない場合はデフォルトの「クラス名（全て小文字）_set」
+    let related_name="AddGuideCourse"
+
+    // 置換用の正規表現文字列を定義
+    let related_name_rgx=new RegExp(related_name+"\-[0-9]+\-", "g");
+    // 現在のフォームセット数
+    let now_count;
+    $(function () {
+        // フォームセット数を取得
+        now_count = $("#id_"+related_name+"-TOTAL_FORMS").val();
+        // フォームセット追加用のテンプレートを取得
+        let det_form_template = $("#formset-template").html();
+
+        // 追加ボタンがクリックされたときの処理
+        $("#add").click(function () {
+            // テンプレートの番号部分を現在のフォームセット数＋１に変更
+            form_html = det_form_template.replace(related_name_rgx, related_name+"-" + now_count++ + "-");
+            // 変更後のテンプレートをフォームに追加
+            $("#formset-block").append(form_html);
+            // 現在のフォームセット数をセット
+            $("#id_"+related_name+"-TOTAL_FORMS").val(now_count);
+        });
+
+        // 削除ボタンがクリックされたときの処理
+        $(document).on("click", "button.formset-del", function () {
+            // 該当フォームセットを除去
+            $(this).parent().remove();
+            // 全フォームセットに対して番号を連番に振りなおす更新処理
+            $("div.formset").each(function(index,elem){
+                // フォームセット内の全要素に対する更新処理
+                $(elem).children().each(function(i, e){
+                    // id属性の値を変更
+                    if($(e).is("[id]")){
+                        id=$(e).attr("id");
+                        $(e).attr("id",id.replace(related_name_rgx, related_name+"-" + index + "-"));
+                    }
+                    // name属性の値を変更
+                    if($(e).is("[name]")){
+                        name=$(e).attr("name");
+                        $(e).attr("name",name.replace(related_name_rgx, related_name+"-" + index + "-"));
+                    }
+                });
+            });
+            // 現在のフォーム数を減らす
+            $("#id_"+related_name+"-TOTAL_FORMS").val(--now_count);
+        });
+    });
+</script>
+
+<!-- フォームセット追加用のテンプレート -->
+<script type="text/html" id="formset-template">
+        {# 空のフォームセットを出力する #}
+
+        {{ reserve_det_form_empty.0.item }}
+        {{ reserve_det_form_empty.0.count }}
+        <div>
+            <div class="fn4" style="border-bottom:1px solid black">
+                <p class="move">移動方法{{ reserve_det_form_empty.0.transportation }}</p>
+                <p class="move_time">時間：{{ reserve_det_form_empty.0.travelTime }}h{{ reserve_det_form_empty.0.travelMinute }}m</p>
+            </div>
+
+            <div class="start_add fn4">
+                <div style="width:50%">
+                    <div class="start_place">場所：{{ reserve_det_form_empty.0.arrivalPoint }}</div>
+                    <div class="start_comment"><p>コメント：</p>{{ reserve_det_form_empty.0.comment }}</div>
+                </div>
+                <div style="width:50%">
+                    <div class="start_photo">写真：{{ reserve_det_form_empty.0.picture }}</div>
+                    <div class="start_time">滞在時間：{{ reserve_det_form_empty.0.stayTime }}h{{ reserve_det_form_empty.0.stayMinute }}m</div>
+                </div>
+            </div>
+            <button class="formset-del" type="button">削除</button>
+        </div>
+</script>
+
+{% endblock %}
+
+{% block contents %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="add bg6">
+            <div class="add2 fn5">スケジュール登録</div>
+            <div class="fn4">
+                <div class="title_add">
+                    タイトル:{{ reserve_form.title }}
+                </div>
+                <div class="explanation_add">
+                    <p>説明:</p>{{ reserve_form.explanation }}
+                </div>
+            </div>
+            
+            <div class="start_add fn4">
+                <div style="width:50%">
+                    <div class="start_place">場所：{{ reserve_form.start }}</div>
+                    <div class="start_comment"><p>コメント：</p>{{ reserve_form.comment }}</div>
+                </div>
+                <div style="width:50%">
+                    <div class="start_photo">写真：{{ reserve_form.picture }}</div>
+                    <div class="start_time">滞在時間：{{ reserve_form.stayTime }}h{{ reserve_form.stayMinute }}m</div>
+                </div>
+            </div>
+
+        <div id="formset-block">
+            {% for f in reserve_det_form %}
+            <div>
+                <div class="fn4" style="border-bottom:1px solid black">
+                    <p class="move">移動方法{{ f.transportation }}</p>
+                    <p class="move_time">時間：{{ f.travelTime }}h{{ f.travelMinute }}m</p>
+                </div>
+
+                <div class="start_add fn4">
+                    <div style="width:50%">
+                        <div class="start_place">場所：{{ f.arrivalPoint }}</div>
+                        <div class="start_comment"><p>コメント：</p>{{ f.comment }}</div>
+                    </div>
+                    <div style="width:50%">
+                        <div class="start_photo">写真：{{ f.picture }}</div>
+                        <div class="start_time">滞在時間：{{ f.stayTime }}h{{ f.stayMinute }}m</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="height:20%; border-bottom:1px solid black;">
+            <button type="button" class="plus" name="add_button" id="add">＋</button>
+        </div>
+        <!-- フォームセット管理用のフォーム -->
+        {{ reserve_det_form.management_form }}
+
+        <div style="height:15%;">
+            <input type="submit" name="button" value="登録" class="a_button register_button" style="height: 70%; width:13%;">
+        </div>
+
+    </div>
+</form>
+
+<a class="a_button back_button" href="#" style="text-decoration: none; color: black;">戻る</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースの削除{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+    <form method="post">
+        {% csrf_token %}
+        <p class="fn4">削除します。よろしいですか？</p>
+        <input type="submit" value="削除">
+    </form>
+    <button><a href="{% url 'graduation:guide_list' %}" style="text-decoration: none; color:black;">キャンセル</a></button>
+{% endblock %}
+

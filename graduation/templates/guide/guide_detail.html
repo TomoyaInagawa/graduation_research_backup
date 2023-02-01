@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load utils %}
+{% block title %}ふらっとナビ/ガイドコースの詳細{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<div class="fn5 bg6" style="padding-left:5%; border-bottom: 2px solid black;">
+    〇コース紹介
+    {% if favorite %}
+        <a class="favorite_button bgy" href="{% url 'graduation:guide_favorite' guidecourse.pk %}" style="text-decoration: none;">☆</a>
+    {% else %}
+        <a class="favorite_button bgw" href="{% url 'graduation:guide_favorite' guidecourse.pk %}" style="text-decoration: none;">☆</a>
+    {% endif %}
+</div>
+
+<div class="detail bg6 fn4">
+    
+    <div class="detail_box">
+        <div class="detail_name">{{ guidecourse.start.name }}</div>
+        <div class="detail_time">{{ guidecourse.stayTime }}時間{{ guidecourse.stayMinute }}分</div>
+        <div class="detail_photo"><img src="{{ guidecourse.picture.url }}"></div>
+        <div class="detail_comment">{{ guidecourse.comment }}</div>
+    </div>
+    
+    {% for addgc in guidecourse.AddGuideCourse.all %}
+        <div class="detail_box">
+            <div class="detail_move">↓<br>移動[{{ addgc.transportation.name }}]<br>↓</div>
+            <div class="detail_time">{{ addgc.travelTime }}時間{{ addgc.travelMinute }}分</div>
+            <div class="detail_photo"></div>
+            <div class="detail_comment"></div>
+        </div>
+
+        <div class="detail_box">
+            <div class="detail_name">{{ addgc.arrivalPoint.name }}</div>
+            <div class="detail_time">{{ addgc.stayTime }}時間{{ addgc.stayMinute }}分</div>
+            <div class="detail_photo"><img src="{{ addgc.picture.url }}"></div>
+            <div class="detail_comment">{{ addgc.comment }}</div>
+        </div>
+    {% endfor %}
+    
+    <div class="detail_total">
+        合計時間{{ guidecourse.getAllTime | div:60 }}時間{{ guidecourse.getAllTime | rem:60 }}分
+    </div>
+
+</div>
+{% endblock %}
+

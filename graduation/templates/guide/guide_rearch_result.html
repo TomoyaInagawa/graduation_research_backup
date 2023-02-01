@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースの検索結果{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<div class="research_conditions">
+    条件
+    <table>
+        <tr><th>場所：</th><td>
+            {% for val in place %}
+                {{val}}
+                {% empty %}
+                    全て
+            {% endfor %}
+        </td></tr>
+        <tr><th>所要時間：</th><td>
+            {% for val in time %}
+                {{val}}
+                {% empty %}
+                    全て
+            {% endfor %}
+        </td></tr>
+        <tr><th>移動手段：</th><td>
+            {% for val in tp %}
+                {{val}}
+                {% empty %}
+                    全て
+            {% endfor %}
+        </td></tr>
+    </table>
+</div>
+<p class="fn5" style="margin-left: 5%;">検索結果</p>
+<div class="research_result fn4">
+    {% for val in guidecourse %}
+    <a href="{% url 'graduation:guide_detail' val.pk %}" style="text-decoration: none;">
+        ●{{val.title}}<br>
+        <div class="research_result_box">{{val.explanation}}</div>
+    </a>
+        {% empty %}
+    {% endfor %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}ふらっとナビ/スタンプラリー{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/map_style.css' %}" rel="stylesheet" />
+{% endblock %}
+{% block contents %}
+<!-- ここにページの機能を追加していく -->
+<body onload="init()">
+    <div id="mapcontainer" style="z-index:1; width:1000px;height:600px;margin: 20 auto; "></div>
+    <div class="box button_box">
+        <button class="page_button" type="button">
+            <a href="#">
+            スタンプ取得
+            </a>
+        </button>
+        <button class="page_button" type="button">
+            <a href="#">
+            スタンプ図鑑
+            </a>
+        </button>
+        <button class="page_button back_button" type="button">
+            <a href="{% url 'graduation:index' %}">
+            戻る
+            </a>
+        </button>
+    </div>
+</body>
+{% endblock %}

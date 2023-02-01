@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ガイドコースの検索{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<form class="" action="{% url 'graduation:guide_rearch_result' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="research_box fn5">
+        <div>〇含む場所</div>
+
+        <div class="research_place research_list fn4">
+        {% for place in Place_list %}
+            <div>
+                <label for="{{place.name}}">
+                    <input type="checkbox" id="{{place.name}}" name="place" value="{{place.name}}">{{ place.name }}
+                </label>
+            </div>
+            {% empty %}
+            <div>
+                <label>
+                    Nodata
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+        <!-- <div class="research_place_other fn4">
+            <label for="other"><input type="checkbox" id="other" name="place" value="other">その他</label>
+            <input type="search" class="other_search">
+        </div> -->
+
+        <div>〇所要時間</div>
+        <div class="research_time research_list fn4">
+            <div>
+                <label for="1time">
+                    <input type="radio" id="1time" name="time" value="～1時間">～1時間
+                </label>
+            </div>
+            <div>
+                <label for="1to2time">
+                    <input type="radio" id="1to2time" name="time" value="1～2時間">1～2時間
+                </label>
+            </div>
+            <div>
+                <label for="2to3time">
+                    <input type="radio" id="2to3time" name="time" value="2～3時間">2～3時間
+                </label>
+            </div>
+            <div>
+                <label for="4to5time">
+                    <input type="radio" id="4to5time" name="time" value="4～5時間">4～5時間
+                </label>
+            </div>
+            <div>
+                <label for="6to7time">
+                    <input type="radio" id="6to7time" name="time" value="6～7時間">6～7時間
+                </label>
+            </div>
+            <div>
+                <label for="8to9time">
+                    <input type="radio" id="8to9time" name="time" value="8～9時間">8～9時間
+                </label>
+            </div>
+            <div>
+                <label for="10to11time">
+                    <input type="radio" id="10to11time" name="time" value="10～11時間">10～11時間
+                </label>
+            </div>
+            <div>
+                <label for="12time">
+                    <input type="radio" id="12time" name="time" value="12時間～">12時間～
+                </label>
+            </div>
+        </div>
+        <div>〇移動手段</div>
+        <div class="research_use research_list fn4">
+        {% for tp in Transportation_list %}
+            <div>
+                <label for="{{tp.name}}">
+                    <input type="checkbox" id="{{tp.name}}" name="tp" value="{{tp.name}}">{{ tp.name }}
+                </label>
+            </div>
+            {% empty %}
+            <div>
+                <label>
+                    Nodata
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+
+    <input type="submit" name="button" value="検索" class="a_button back_button">
+</form>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+.button_box {
+    position: absolute;
+    width: 10%;
+    height: 20%;
+    top: 90%;
+    right: 10%;
+    z-index: 2;
+}
+
+.button_box button {
+    font-size: 1.8vmin;
+    white-space: nowrap;
+}
+
+.back_button {
+    position: relative;
+    left: 45%;
+}

@@ -1,0 +1,36 @@
+.style {
+    background-color:#2F170F;
+    color:#2F170F;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.genre_css {
+    margin: 30 auto;
+    font-size: 20px;  
+    position: absolute; 
+    top: 76.9%; 
+    left:47%; 
+    display: flex;
+}
+
+.category_css {
+    width:70px; 
+    position:absolute; 
+    top: 80%; 
+    left:53%; 
+    display: flex; 
+}
+
+.explanation_css {
+    border: double white; 
+    display: inline-block; 
+    width:700px; 
+    position:absolute; 
+    top: 100%; 
+    left:47%; 
+    display: flex;
+}
+
+.border {
+    border: double white;
+}
