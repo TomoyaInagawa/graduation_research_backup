@@ -6,8 +6,7 @@
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
-<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
-<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/shop_list.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block contents %}
@@ -16,8 +15,8 @@
     {% for val in store %}
 
         <div class="list05">
-            <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
             <img src="{{ val.pic1.url }}" width="390" height="200"></img>
+            <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
         </div>
 
     {% endfor %}
