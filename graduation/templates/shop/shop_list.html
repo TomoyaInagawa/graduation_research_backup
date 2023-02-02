@@ -19,9 +19,13 @@
             <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
             <img src="{{ val.pic1.url }}" width="390" height="200"></img>
         </div>
-
-    {% endfor %}
+            {% empty %}
+            <h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">検索条件に一致する項目はありません。</h1>
 </div>
+{% endfor %}
 
+<div align="center">
+    <button style="border:none; margin: 10 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:shop' %}" style="text-decoration:none;"><b>戻る</b></a></button>
+</div>
 
 {% endblock %}

@@ -124,7 +124,7 @@ class ShopListView(generic.ListView):
     model = Store
 
     def post(self, request):
-        result = Store.objects.all()
+        result = Store.objects.none()
 
         name = request.POST.get("search")
         if name:
@@ -145,11 +145,11 @@ class ShopListView(generic.ListView):
 
 
 
-class ShopShosaiView(generic.TemplateView):
-    template_name = "shop/shop_shosai.html"
+# class ShopShosaiView(generic.TemplateView):
+#     template_name = "shop/shop_shosai.html"
 
-class ShopGourmetView(generic.TemplateView):
-    template_name = "shop/shop_gourmet.html"
+# class ShopGourmetView(generic.TemplateView):
+#     template_name = "shop/shop_gourmet.html"
     
 class AccountView(generic.TemplateView):
     template_name = "account.html"
