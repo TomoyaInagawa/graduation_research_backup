@@ -11,7 +11,7 @@ urlpatterns = [
     path('shop/', views.ShopView.as_view(), name="shop"),
     path('shop_list/', views.ShopListView.as_view(), name="shop_list"),
     path('shop_shosai/<slug:pk>', views.Shop_detailView.as_view(), name="shop_shosai"),
-    path('shop_gourmet/', views.ShopGourmetView.as_view(), name="shop_gourmet"),
+    # path('shop_gourmet/', views.ShopGourmetView.as_view(), name="shop_gourmet"),
     path('account/', views.AccountView.as_view(), name="account"),
     #サインアップ用ページ
     path('accounts/user-signup', views.UserSignupView.as_view(), name="user_signup"),
