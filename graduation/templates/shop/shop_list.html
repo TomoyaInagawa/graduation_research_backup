@@ -20,8 +20,8 @@
         </div>
             {% empty %}
             <h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">検索条件に一致する項目はありません。</h1>
+    {% endfor %}
 </div>
-{% endfor %}
 
 <div align="center">
     <button style="border:none; margin: 10 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:shop' %}" style="text-decoration:none;"><b>戻る</b></a></button>
