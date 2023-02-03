@@ -31,6 +31,7 @@
         <script src="{% static 'js/modal.js' %}"></script>
         <link href="{% static 'css/modal.css' %}" rel="stylesheet" />
         <!-------------- -->
+        <link href="{% static 'css/sns.css' %}" rel="stylesheet" />
         {% block head %}{% endblock %}
     </head>
 
@@ -123,28 +124,12 @@
         </div>
         </section> -->
         <!-- モーダルエリアここまで -->
-
-        <ul id="nav">
-            <li><a href="#">other</a></li>
-            <li><a href="#">other</a></li>
-            <li><a href="#">other</a></li>
-            <li><a href="#">other</a></li>
+        <ul class="snsButtons">
+            <li class="snsButtons_twitter"><img src="{% static 'assets/img/ツイッター.svg' %}" style="width:40px;" /><a href="#">ツイッター</a></li>
+            <li class="snsButtons_facebook"><img src="{% static 'assets/img/フェイスブック.svg' %}" style="width:40px;" /><a href="#">フェイスブック</a></li>
+            <li class="snsButtons_instagram"><img src="{% static 'assets/img/インスタグラム.svg' %}" style="width:40px;" /><a href="#">インスタグラム</a></li>
+            <li class="kyoto_page"><img src="{% static 'assets/img/京都タワー.svg' %}" style="width:40px;" /><a href="#">観光協会</a></li>
         </ul>
-        <style>
-            #nav {
-                list-style: none;
-            }
-
-            #nav li{
-                width: 140px;
-                text-align: center;
-                
-            }
-
-            #nav li a{
-                text-decoration: none;
-            }
-        </style>
         </footer>
         <!-- フッター -->
 
