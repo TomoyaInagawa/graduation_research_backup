@@ -29,13 +29,16 @@
   /* 各 SNS のブランドカラー */
   .snsButtons_twitter  { background: #1da1f2; }
   .snsButtons_facebook { background: #3b5998; }
-  .snsButtons_instagram   { background-color: #4158D0;
+  /* .snsButtons_instagram   { background-color: #4158D0;
                             background-image: linear-gradient(
                                 43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-     }
+     } */
+  .snsButtons_instagram {
+    background: linear-gradient(#4C64D3, #CF2E92, #F26939, #FFDD83);
+  }
   .kyoto_page   { background: #dd4b39; }
 
-.facebook {
+/* .facebook {
     margin-right: 25px;
 }
 
@@ -49,4 +52,37 @@
 
 .kyoto {
     margin-right: 60px;
+} */
+
+/* .twitter_text { color: white; }
+
+.instagram_text { color: white; }
+
+.facebook_text { color: white; }
+
+.kyoto_text { color: white; } */
+
+.twitter_text { 
+  color: white;
+  /* display:block; */
+  line-height: 3;
+  padding: 10px 0;
+}
+
+.instagram_text { 
+  color: white;
+  line-height: 3;
+  padding: 10px 0;
+}
+
+.facebook_text {
+  color: white; 
+  line-height: 3;
+  padding: 10px 0;
+}
+
+.kyoto_text { 
+  color: white; 
+  line-height: 3;
+  padding: 10px 0;
 }
