@@ -48,3 +48,35 @@ slick
     object-fit: cover;
   }
 }
+
+.highlight{
+	margin: 30 auto;
+}
+
+article {
+	float: left;
+	margin-right: 2%;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 3px;
+	width: 31%;
+	box-shadow: 0 0 5px #999;
+}
+.right_content {
+	margin-left: 0;
+}
+.highlight img {
+	/* width: 450px; */
+	width: 472px;
+	height:260px;
+	object-fit: cover;
+}
+.name {
+	text-align: center;
+	color: rgb(241, 192, 103);
+	margin-top: 200;
+}
+.name2 {
+	color: rgb(241, 192, 103);
+
+}
