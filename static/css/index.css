@@ -39,6 +39,10 @@ slick
 	opacity: 1;
 }
 
+.top{
+	margin-top: 350px;
+}
+
 @media screen and (max-width: 1024px) {
   .slick-slide img {
     width: 100%;
