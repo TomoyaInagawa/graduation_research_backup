@@ -1,8 +1,8 @@
-.style {
+/* .style {
     background-color:#2F170F;
     color:#2F170F;
     border-radius: 0px 20px 20px 0px;
-}
+} */
 
 .genre_css {
     margin: 30 auto;
@@ -22,7 +22,7 @@
 }
 
 .explanation_css {
-    border: double white; 
+    border: double rgb(245, 170, 105); 
     display: inline-block; 
     width:700px; 
     position:absolute; 
@@ -31,6 +31,4 @@
     display: flex;
 }
 
-.border {
-    border: double white;
-}
+

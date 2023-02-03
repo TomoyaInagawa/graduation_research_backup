@@ -27,33 +27,33 @@
 {% endblock %}
 
 {% block contents %}
-<h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;">{{ object.name }}</h1>
-
 <div class="border">
-<div class="hscroll">
-    <ul>
-        <li><img src="{{ object.pic1.url }}" width="600px" height="600px"></li>
-        {% if object.pic2 %}
-        <li><img src="{{ object.pic2.url }}" width="600px" height="600px"></li>
-        {% endif %}
-        {% if object.pic3 %}
-        <li><img src="{{ object.pic3.url }}" width="600px" height="600px"></li>
-        {% endif %}
-        {% if object.pic4 %}
-        <li><img src="{{ object.pic4.url }}" width="600px" height="600px"></li>
-        {% endif %}
-        {% if object.pic5 %}
-        <li><img src="{{ object.pic5.url }}" width="600px" height="600px"></li>
-        {% endif %}
-    </ul>
-    <span class="arrow left"></span>
-    <span class="arrow right"></span>
-</div>
+    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;">{{ object.name }}</h1>
 
-<p class="text-primary mb-3 genre_css">ジャンル</p>
-<h2 class="text-primary mb-3 category_css">{{ object.category }}</h2>
-<p class="text-primary mb-3 explanation_css">{{ object.explanation }}</p>
-<div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet_search' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
+        <div class="hscroll">
+            <ul>
+                <li><img src="{{ object.pic1.url }}" width="600px" height="600px"></li>
+                {% if object.pic2 %}
+                <li><img src="{{ object.pic2.url }}" width="600px" height="600px"></li>
+                {% endif %}
+                {% if object.pic3 %}
+                <li><img src="{{ object.pic3.url }}" width="600px" height="600px"></li>
+                {% endif %}
+                {% if object.pic4 %}
+                <li><img src="{{ object.pic4.url }}" width="600px" height="600px"></li>
+                {% endif %}
+                {% if object.pic5 %}
+                <li><img src="{{ object.pic5.url }}" width="600px" height="600px"></li>
+                {% endif %}
+            </ul>
+            <span class="arrow left"></span>
+            <span class="arrow right"></span>
+        </div>
+
+    <p class="text-primary mb-3 genre_css">ジャンル</p>
+    <h2 class="text-primary mb-3 category_css">{{ object.category }}</h2>
+    <p class="text-primary mb-3 explanation_css">{{ object.explanation }}</p>
+    <div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet_search' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
 </div>
 {% endblock %}
 

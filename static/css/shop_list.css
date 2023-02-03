@@ -17,5 +17,6 @@ label, input[type='radio'] {
     padding:1em;
     border:2px solid rgb(248, 223, 175);
     border-radius:0.5em;
-    box-shadow:2px 2px 2px rgb(246, 191, 147);}
+    box-shadow:2px 2px 2px rgb(246, 191, 147);
+}
 
