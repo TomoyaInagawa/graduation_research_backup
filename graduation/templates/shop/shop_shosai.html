@@ -15,7 +15,7 @@
 {% block contents %}
 
 <div class="shosai">
-    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><span>{{object.place.name}}</span></h1>
+    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><span><font color="white">{{object.place.name}}</font></span></h1>
 
     <div class="hscroll">
         <ul>
@@ -38,29 +38,28 @@
     </div>
 
     <div class="shosai01">
-
         <div class="shosai_location text-primary mb-3">
-        <div class="icon">📍</div><div style="font-size: 2em;">{{object.place.location}}</div>
+        <div class="icon">📍</div><div style="font-size: 2em;"><font color="white">{{object.place.location}}</font></div>
         </div>
 
         <div class="shosai_call text-primary mb-3">
-        <div class="icon">📞</div><div style="font-size: 2em;">{{object.place.call}}</div>
+        <div class="icon">📞</div><div style="font-size: 2em;"><font color="white">{{object.place.call}}</font></div>
         </div>
 
         <div class="shosai_openingHours text-primary mb-3">
-        <div class="icon">🕘</div><div style="font-size: 2em;">{{object.place.openingHours}}  ~  {{object.place.endingHours}}</div>
+        <div class="icon">🕘</div><div style="font-size: 2em;"><font color="white">{{object.place.openingHours}}  ~  {{object.place.endingHours}}</font></div>
         </div>
 
         <div class="shosai_regularHoliday text-primary mb-3">
-        <div class="icon">📅</div><div style="font-size: 2em;">定休日  {{object.place.regularHoliday}}</div>
+        <div class="icon">📅</div><div style="font-size: 2em;"><font color="white">定休日  {{object.place.regularHoliday}}</font></div>
         </div>
 
         <div class="shosai_url text-primary mb-3">
-        <div class="icon">🔗</div><div style="font-size: 2em;"><a href="{{object.place.url}}">{{object.place.url}}</a></div>
+        <div class="icon">🔗</div><div style="font-size: 2em;"><a target="_blank" href="{{object.place.url}}">{{object.place.url}}</a></div>
         </div>
 
-        <div class="shosai_explanation text-primary mb-3" style="font-size: 2em; margin: 30 auto; border: 2px solid white;">
-            {{object.place.explanation}}
+        <div class="shosai_explanation text-primary mb-3" style="font-size: 2em; margin: 30 auto;">
+            <font color="white">{{object.place.explanation}}</font>
         </div>
 
         <div class="parent1">
