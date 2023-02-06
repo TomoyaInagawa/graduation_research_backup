@@ -51,8 +51,8 @@
         </div>
 
     <p class="text-primary mb-3 genre_css">ジャンル</p>
-    <h2 class="text-primary mb-3 category_css">{{ object.category }}</h2>
-    <p class="text-primary mb-3 explanation_css">{{ object.explanation }}</p>
+    <h2 class="text-primary mb-3 category_css" style="font-size: 2em;">{{ object.category }}</h2>
+    <p class="text-primary mb-3 explanation_css" style="font-size: 2em;">{{ object.explanation }}</p>
     <div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet_search' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
 </div>
 {% endblock %}

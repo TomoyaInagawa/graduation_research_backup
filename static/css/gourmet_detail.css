@@ -22,7 +22,7 @@
 }
 
 .explanation_css {
-    border: double rgb(245, 170, 105); 
+    border: double white; 
     display: inline-block; 
     width:700px; 
     position:absolute; 
