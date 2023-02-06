@@ -16,7 +16,8 @@
 
         <div class="list05">
             <img src="{{ val.pic1.url }}" width="390" height="200"></img>
-            <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
+            <br>
+            <a href="{% url 'graduation:shop_shosai' val.pk %}" style="font-size:25px;">{{val.place.name}}</a>
         </div>
             {% empty %}
             <h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">検索条件に一致する項目はありません。</h1>

@@ -15,10 +15,7 @@
 {% block contents %}
 
 <div class="shosai">
-
-    <div class="shosai_name">
-    <p><span>{{object.place.name}}</span></p>
-    </div>
+    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><span>{{object.place.name}}</span></h1>
 
     <div class="hscroll">
         <ul>
@@ -42,32 +39,32 @@
 
     <div class="shosai01">
 
-        <div class="shosai_location">
-        📍{{object.place.location}}
+        <div class="shosai_location text-primary mb-3">
+        <div class="icon">📍</div>{{object.place.location}}
         </div>
 
-        <div class="shosai_call">
-        ☎{{object.place.call}}
+        <div class="shosai_call text-primary mb-3">
+        <div class="icon">📞</div>{{object.place.call}}
         </div>
 
-        <div class="shosai_openingHours">
-        🕘{{object.place.openingHours}}  ~  {{object.place.endingHours}}
+        <div class="shosai_openingHours text-primary mb-3">
+        <div class="icon">🕘</div>{{object.place.openingHours}}  ~  {{object.place.endingHours}}
         </div>
 
-        <div class="shosai_regularHoliday">
-        📅 定休日 {{object.place.regularHoliday}}
+        <div class="shosai_regularHoliday text-primary mb-3">
+        <div class="icon">📅</div>定休日  {{object.place.regularHoliday}}
         </div>
 
-        <div class="shosai_url">
-        🔗<a href="{{object.place.url}}">{{object.place.url}}</a>
+        <div class="shosai_url text-primary mb-3">
+        <div class="icon">🔗</div><a href="{{object.place.url}}">{{object.place.url}}</a>
         </div>
 
-        <div class="shosai_explanation">
+        <div class="shosai_explanation text-primary mb-3">
             {{object.place.explanation}}
         </div>
 
         <div class="parent1">
-            <button class="item"><a href="{% url 'graduation:shop' %}">戻る</a></button>
+            <button class="btn btn-secondary btm-x1" style="margin: 10 auto;"><a href="{% url 'graduation:shop' %}" style="text-decoration: none;"><b>戻る</b></a></button>
         </div>
     </div>
 </div>
