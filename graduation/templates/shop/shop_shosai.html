@@ -2,13 +2,14 @@
 
 {% load static %}
 
-{% block title %}ふらっとナビ/(店){% endblock %}
+{% block title %}店詳細{% endblock %}
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
-<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
-<link href="{% static 'css/shop.css' %}" rel="stylesheet" />
-<link href="{% static 'css/gourmet_images.css' %}" rel="stylesheet" />
+<!-- <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/shop.css' %}" rel="stylesheet" /> -->
+<!-- <link href="{% static 'css/gourmet_images.css' %}" rel="stylesheet" /> -->
+<link href="{% static 'css/shop_shosai.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block contents %}
@@ -21,22 +22,22 @@
 
     <div class="hscroll">
         <ul>
-            <li><img src="{{ object.pic1.url }}"></li>
+            <li><img src="{{ object.pic1.url }}" width="600px" height="600px"></li>
             {% if object.pic2 %}
-            <li><img src="{{ object.pic2.url }}"></li>
+            <li><img src="{{ object.pic2.url }}" width="600px" height="600px"></li>
             {% endif %}
             {% if object.pic3 %}
-            <li><img src="{{ object.pic3.url }}"></li>
+            <li><img src="{{ object.pic3.url }}" width="600px" height="600px"></li>
             {% endif %}
             {% if object.pic4 %}
-            <li><img src="{{ object.pic4.url }}"></li>
+            <li><img src="{{ object.pic4.url }}" width="600px" height="600px"></li>
             {% endif %}
             {% if object.pic5 %}
-            <li><img src="{{ object.pic5.url }}"></li>
+            <li><img src="{{ object.pic5.url }}" width="600px" height="600px"></li>
             {% endif %}
         </ul>
-        <span class="arrow left">  
-        </span><span class="arrow right"></span>
+        <span class="arrow left"></span>
+        <span class="arrow right"></span>
     </div>
 
     <div class="shosai01">
@@ -69,14 +70,6 @@
             <button class="item"><a href="{% url 'graduation:shop' %}">戻る</a></button>
         </div>
     </div>
-
-    <!-- <div class="shosai_district">
-        {{object.place.district}}
-    </div>
-
-    <div class="shosai_furigana">
-        {{object.place.furigana}}
-    </div> -->
 </div>
 
 {% endblock %}

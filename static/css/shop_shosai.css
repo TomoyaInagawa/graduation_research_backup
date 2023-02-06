@@ -1,0 +1,134 @@
+.hscroll {
+	margin-left: 30;
+	width:600px;
+    height:600px;
+	position:relative;
+	margin-left: 100;
+	/* border:1px solid lightgray; */
+}
+.hscroll ul {
+	padding:0;
+	margin:0;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	white-space:nowrap;
+	scroll-snap-type:x mandatory;
+	scroll-behavior:smooth;
+}
+.hscroll img {
+	width:100%;
+	height:100%;
+	object-fit:contain;
+}
+.hscroll li {
+	list-style:none;
+	display:inline-block;
+	scroll-snap-align:center;
+	width:100%;
+	height:100%;
+}
+.arrow {
+	top:0;
+	position:absolute;
+	width:8%;
+	height:100%;
+	/* background:rgba(250,250,250,0.3); */
+	cursor:pointer;
+}
+.arrow:before {
+	content:'';
+	position:absolute;
+	width:10px;
+	height:10px;
+	border-left:4px solid white;
+	border-bottom:4px solid white;
+}
+.left {
+	left:0px;
+}
+.left:before {
+	top:calc(50% - 10px);
+	left:calc(50% - 4px);
+	transform:rotate(45deg);
+}
+.right {
+	right:0;
+}
+.right:before {
+	top:calc(50% - 10px);
+	right:calc(50% - 6px);
+	transform:rotate(-135deg);
+}
+@media screen and (max-width:480px) {
+	.hscroll ul {
+		overflow-x:auto;
+	}
+}
+
+/* .shosai_name {
+    background-color:#2F170F;
+    color:#2F170F;
+    border-radius: 0px 20px 20px 0px;
+} */
+
+.shosai_location {
+
+    width:700px; 
+    position:absolute; 
+    top: 75%; 
+    left:50%; 
+    display: flex;
+}
+.shosai_call {
+
+    width:700px; 
+    position:absolute; 
+    top: 80%; 
+    left:50%; 
+    display: flex;
+}
+.shosai_openingHours {
+
+    width:700px; 
+    position:absolute; 
+    top: 85%; 
+    left:50%; 
+    display: flex;
+}
+.shosai_regularHoliday{
+
+    width:700px; 
+    position:absolute; 
+    top: 90%; 
+    left:50%; 
+    display: flex;
+}
+.shosai_url {
+
+    width:700px; 
+    position:absolute; 
+    top: 95%; 
+    left:50%; 
+    display: flex;
+}
+
+.shosai_explanation {
+
+    width:700px; 
+    position:absolute; 
+    top: 100%; 
+    left:50%; 
+    display: flex;
+}
+
+.shosai_url {
+    width: 250;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.parent1 {
+	text-align: center;
+}

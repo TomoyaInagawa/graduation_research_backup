@@ -3,7 +3,7 @@
 {% load static %}
 
 
-{% block title %}ふらっとナビ/(店){% endblock %}
+{% block title %}店検索画面{% endblock %}
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
@@ -25,18 +25,15 @@
 
 {% block contents %}
 
-<br>
-<form action="{% url 'graduation:shop_list' %}" method="post">
-<div class="parent">
+<form style="margin:10 auto;" action="{% url 'graduation:shop_list' %}" method="post">
+    <div class="parent">
         {% csrf_token %}
         <input type="search" name="search" placeholder="キーワードを入力">
         <input type="submit" name="submit" value="検索">
-</div>
-<br>
+    </div>
 </form>
 
-<br>
-<form action="{% url 'graduation:shop_list' %}" method="post">
+<form style="margin:10 auto;" action="{% url 'graduation:shop_list' %}" method="post">
     <div class="parent">
         <div class="pagination">
 
@@ -52,6 +49,9 @@
                     <option value="和食">
                         和食
                     </option>
+                    <option value="中華">
+                        中華
+                    </option>
                 </select>
             </div>
             <div class="kensaku1">
@@ -60,5 +60,8 @@
         </div>
     </div>
 </form>
+<div align="center">
+    <button style="border:none; margin: 50 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:index' %}" style="text-decoration:none;"><b>戻る</b></a></button>
+</div>
 {% endblock %}
 

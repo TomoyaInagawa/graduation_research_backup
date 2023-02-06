@@ -31,6 +31,7 @@
         <script src="{% static 'js/modal.js' %}"></script>
         <link href="{% static 'css/modal.css' %}" rel="stylesheet" />
         <!-------------- -->
+        <link href="{% static 'css/sns.css' %}" rel="stylesheet" />
         {% block head %}{% endblock %}
     </head>
 
@@ -80,8 +81,6 @@
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:gourmet' %}">グルメ</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:shop' %}">店</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:inquiry' %}">お問い合わせ</a></li>
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="#">SNSアカウント</a></li>
-
                     </ul>
                 </div>
             </div>
@@ -105,11 +104,11 @@
         {% block contents %}{% endblock %}
         
         <!-- フッター -->
-        <footer id="footer" class="footer text-faded text-center py-5">
+        <footer id="footer" class="footer text-faded text-center py-5" style="clear: both;">
             <div class="container"><p class="m-0 small">Copyright &copy; ふらっとナビ | graduation_research2023 </p></div>
-        <p id="openModal"><a>SNSアカウント</a></p>
+        <!-- <p id="openModal"><a>SNSアカウント</a></p> -->
         <!-- モーダルエリアここから -->
-        <section id="modalArea" class="modalArea">
+        <!-- <section id="modalArea" class="modalArea">
         <div id="modalBg" class="modalBg"></div>
         <div class="modalWrapper">
             <div class="modalContents">
@@ -121,8 +120,14 @@
             ×
             </div>
         </div>
-        </section>
+        </section> -->
         <!-- モーダルエリアここまで -->
+        <ul class="snsButtons">
+            <li class="snsButtons_twitter"><img class="twitter" src="{% static 'assets/img/ツイッター.svg' %}" style="width:40px;" align="left" /><a target="_blank" href="https://twitter.com/Flat_navi"><b class="twitter_text">ツイッター</b></a></li>
+            <li class="snsButtons_facebook"><img class="facebook" src="{% static 'assets/img/フェイスブック.svg' %}" style="width:40px;" align="left" /><a target="_blank" href="https://www.facebook.com/profile.php?id=100090088897152"><b class="facebook_text">フェイスブック</b></a></li>
+            <li class="snsButtons_instagram"><img class="instagram" src="{% static 'assets/img/インスタグラム.svg' %}" style="width:40px;" align="left" /><a target="_blank" href="https://www.instagram.com/official_flatnavi/"><b class="instagram_text">インスタグラム</b></a></li>
+            <li class="kyoto_page"><img class="kyoto" src="{% static 'assets/img/京都タワー.svg' %}" style="width:40px;" align="left" /><a target="_blank" href="https://www.kyokanko.or.jp/"><b class="kyoto_text">観光協会</b></a></li>
+        </ul>
         </footer>
         <!-- フッター -->
 

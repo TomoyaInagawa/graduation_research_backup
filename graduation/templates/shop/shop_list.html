@@ -2,12 +2,11 @@
 
 {% load static %}
 
-{% block title %}ふらっとナビ/(店){% endblock %}
+{% block title %}店リスト{% endblock %}
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
-<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
-<link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
+<link href="{% static 'css/shop_list.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block contents %}
@@ -16,11 +15,16 @@
     {% for val in store %}
 
         <div class="list05">
+            <img src="{{ val.pic1.url }}" width="390" height="200"></img>
             <a href="{% url 'graduation:shop_shosai' val.pk %}">{{val.place.name}}</a>
         </div>
-
+            {% empty %}
+            <h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">検索条件に一致する項目はありません。</h1>
     {% endfor %}
 </div>
 
+<div align="center">
+    <button style="border:none; margin: 10 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:shop' %}" style="text-decoration:none;"><b>戻る</b></a></button>
+</div>
 
 {% endblock %}

@@ -1,0 +1,22 @@
+label, input[type='radio'] {
+    cursor: pointer;
+}
+
+
+.listt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.list05 {
+    margin-bottom: 3rem;
+    padding: 3rem;
+    width: 27%;
+    margin:20px auto;
+    padding:1em;
+    border:2px solid rgb(248, 223, 175);
+    border-radius:0.5em;
+    box-shadow:2px 2px 2px rgb(246, 191, 147);
+}
+

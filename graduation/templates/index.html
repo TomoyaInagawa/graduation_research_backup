@@ -6,8 +6,10 @@
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-<link href="{% static 'css/index.css' %}" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block bread %}
@@ -21,14 +23,90 @@
 
 {% block contents %}
 <!-- ここにページの機能を追加していく -->
-<ul class="slider">
-    <li><img src="{% static 'assets/img/冬のあったかすいぞくかん.jpg' %}"></li>
-    <li><img src="{% static 'assets/img/清水寺.jpg' %}"></li>
-    <li><img src="{% static 'assets/img/桃山城.jpg' %}"></li>
-    <li><img src="{% static 'assets/img/福知山城.jpg' %}"></li>
-    <li><img src="{% static 'assets/img/夜景.jpg' %}"></li>
-</ul>
+<div class="top" >
+    <h1 class="text-primary mb-3" align="center" style="margin: 30;"><b>おすすめスポット</b></h1>
+    <div class="section">
+        <div class="sliderArea">
+            <div class="regular_2 slider">
+                <div><a target="_blank" href="https://www.kyoto-aquarium.com/index.html"><img src="{% static 'assets/img/冬のあったかすいぞくかん.jpg' %}"></a></div>
+                <div><a target="_blank" href="https://www.kiyomizudera.or.jp/"><img src="{% static 'assets/img/清水寺.jpg' %}"></a></div>
+                <div><a target="_blank" href="https://kyoto-design.jp/spot/8665"><img src="{% static 'assets/img/桃山城.jpg' %}"></a></div>
+                <div><a target="_blank" href="https://www.fukuchiyamacastle.jp/"><img src="{% static 'assets/img/福知山城.jpg' %}"></a></div>
+                <div><a target="_blank" href="https://toji.or.jp/guide/gojunoto/"><img src="{% static 'assets/img/夜景.jpg' %}"></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="highlight">
+    <h1 class="name">観光の見どころ</h1>
+        <article>
+            <header>
+                <img src="{% static 'assets/img/伏見稲荷大社.jpg' %}">
+                <h2 class="name2">伏見稲荷大社</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+        <article class="right_content">
+            <header>
+                <img src="{% static 'assets/img/金閣寺.jpg' %}">
+
+                <h2 class="name2">金閣寺</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+        <article>
+            <header>
+                <img src="{% static 'assets/img/清水寺2.jpg' %}">
+                <h2 class="name2">清水寺</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+        <article class="right_content">
+            <header>
+                <img src="{% static 'assets/img/元離宮二条城.jpg' %}">
+                <h2 class="name2">元離宮二条城</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+        <article class="right_content">
+            <header>
+                <img src="{% static 'assets/img/東寺.jpg' %}">
+                <h2  class="name2">東寺</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+        <article class="right_content">
+            <header>
+                <img src="{% static 'assets/img/北野天満宮.jpg' %}">
+                <h2 class="name2">北野天満宮</h2>
+            </header>
+            <p class="text_excerpt">コンテンツの説明文</p>
+            <div class="btn_area">
+                <a href="#">開く</a>
+            </div>
+        </article>
+</div>
 {% endblock %}
 
 {% block scripts %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% endblock %}
