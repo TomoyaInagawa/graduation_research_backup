@@ -17,7 +17,7 @@ class GeneralUser(models.Model):
         verbose_name_plural = '利用者'
     
     def __str__(self):
-        return self.customuser
+        return self.customuser.name
 
 
 
@@ -110,7 +110,7 @@ class TouristArea(models.Model):
 # ガイドコース
 class GuideCourse(models.Model):
     
-    id = models.CharField(verbose_name='ガイドコースID', max_length=12, primary_key=True)
+    id = models.AutoField(verbose_name='ガイドコースID', max_length=12, primary_key=True)
     title = models.CharField(verbose_name='名称', max_length=50)
     explanation = models.TextField(verbose_name='ガイドコース説明')
     author = models.ForeignKey(CustomUser, verbose_name='作成者', on_delete=models.PROTECT)
@@ -126,17 +126,16 @@ class GuideCourse(models.Model):
     def getAllTime(self):
         time = 0
         time += self.stayTime*60+self.stayMinute
-        for x in self.addguidecourse_set:
+        for x in self.AddGuideCourse.all():
             time += x.travelTime*60+x.travelMinute
-            time += x.endingHours-x.openingHours
-
+            time += x.stayTime*60+x.stayMinute
         return time
 
     class Meta:
         verbose_name_plural = 'ガイドコース'
     
     def __str__(self):
-        return self.name+" : "+self.start.name
+        return self.title
 
 
 
@@ -150,7 +149,7 @@ class GuideCourseLike(models.Model):
         verbose_name_plural = 'お気に入りのガイドコース'
     
     def __str__(self):
-        return self.guideCourse
+        return self.guideCourse.title
 
 
 
@@ -162,7 +161,7 @@ class AddGuideCourse(models.Model):
     transportation = models.ForeignKey(Transportation,verbose_name='移動手段', on_delete=models.PROTECT, related_name='AddGuideCourse')
     travelTime = models.IntegerField(verbose_name='移動時間（時）')
     travelMinute = models.IntegerField(verbose_name='移動時間（分）')
-    picture = models.ImageField(verbose_name='写真', )
+    picture = models.ImageField(verbose_name='写真', null=True, )
     comment = models.TextField(verbose_name='コメント')
     stayTime = models.IntegerField(verbose_name='滞在時間（時）')
     stayMinute = models.IntegerField(verbose_name='滞在時間（分）')
@@ -327,5 +326,5 @@ class PlaceLike(models.Model):
         verbose_name_plural = '場所のお気に入り'
     
     def __str__(self):
-        return self.name
+        return self.place.name
 

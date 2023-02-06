@@ -22,10 +22,12 @@ urlpatterns = [
     path('guide4/<slug:pk>', views.Guide_detailView.as_view(), name="guide_detail"),
     path('guide5/', views.Guide_listView.as_view(), name="guide_list"),
     path('guide5_2/<slug:pk>', views.Guide_deleteView.as_view(), name="guide_delete"),
-    path('guide6/', views.Guide_favoriteView.as_view(), name="guide_favorite"),
-    path('guide7/<int:pk>', views.Guide_place_detailView.as_view(), name="guide_place_detail"),
-    path('dbtest/', views.DBTestView.as_view(), name="dbtest"),
-    path('placetest/', views.PlacetestView.as_view(), name="placetest"),
+    path('guide6/', views.Guide_favorite_listView.as_view(), name="guide_favorite_list"),
+    path('guide7/<slug:pk>', views.Guide_place_detailView.as_view(), name="guide_place_detail"),
+    
+    path('favorite/<slug:pk>', views.Guide_favoriteView, name="guide_favorite"),
+    path('favorite2/<slug:pk>', views.Guide_favorite2View, name="guide_favorite2"),
+    path('place/<slug:pk>', views.Guide_place_favoriteView, name="guide_place_favorite"),
 
     # 利用規約
     path('user-signup/terms_of_service/', views.Terms_of_serviceView.as_view(), name="terms_of_service"),

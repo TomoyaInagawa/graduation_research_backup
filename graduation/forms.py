@@ -72,43 +72,31 @@ class GuideCourseForm(forms.ModelForm):
         #対象モデルを指定
         model = GuideCourse
         #入力する項目を指定
-        fields = ('start', 'picture', 'comment', 'stayTime', 'stayMinute')
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        #for文を使って全項目に同じクラス属性を設定
-        #InquiryFormと同じように個別に設定するのがベスト
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
-
-
-class GuideCourse2Form(forms.Form):
-
-    start = forms.ModelChoiceField(queryset=Place.objects.all())
-    gc_picture = forms.ImageField()
-    gc_comment = forms.CharField(widget=forms.Textarea)
-    gc_stayTime = forms.IntegerField()
-    gc_stayMinute = forms.IntegerField()
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        #for文を使って全項目に同じクラス属性を設定
-        #InquiryFormと同じように個別に設定するのがベスト
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
+        fields = ('title', 'explanation' ,'start', 'picture', 'comment', 'stayTime', 'stayMinute')
 
 class AddGuideCourseForm(forms.ModelForm):
+    # フィールド名の先頭につけるプレフィックス
+    # ※他のフォームと区別したい場合に使える
+    # prefix = "rd"
+
     class Meta:
         #対象モデルを指定
         model = AddGuideCourse
         #入力する項目を指定
         fields = ('arrivalPoint', 'transportation', 'travelTime', 'travelMinute', 'picture', 'comment', 'stayTime', 'stayMinute')
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
-
+# 予約明細フォームセット
+# ※同じフォームを複数使いたいときに使える
+# ※参照元と参照先をセットで扱いたいとき:inlineformset_factory
+# 　単独で扱いたいとき:modeformset_factory
+# 　単なるフォームの時:fomset_factory
+ReserveDetailFormSet = forms.inlineformset_factory(
+    GuideCourse,    # 参照先モデル
+    AddGuideCourse,  # 参照元モデル
+    fields = ('arrivalPoint', 'transportation', 'travelTime', 'travelMinute', 'picture', 'comment', 'stayTime', 'stayMinute'),   # 参照元モデルの入力項目 
+    extra=1,    # 初期フォーム数
+    can_delete=False    # 削除可能（Falseにする）
+)
 
 class PlaceForm(forms.ModelForm):#場所
     class Meta:
