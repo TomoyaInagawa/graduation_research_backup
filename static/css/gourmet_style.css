@@ -15,11 +15,12 @@ label, input[type='radio'] {
     width: 27%;
     margin:20px auto;
     padding:1em;
-    border:2px solid rgb(248, 223, 175);
+	box-shadow: 0 0 5px #999;
     border-radius:0.5em;
-    box-shadow:2px 2px 2px rgb(246, 191, 147);}
+    /* box-shadow:2px 2px 2px rgb(246, 191, 147); */
+}
 
 .archive3 {
     font-size: 30px;
-    color: rgb(248, 223, 175);
-  }
+    color: white;
+}

@@ -18,7 +18,7 @@ slick
 }
 .slick-slide img {
 	width: 100%;
-	height: 80%;
+	height: 100%;
   object-fit: cover;
 }
 
@@ -86,4 +86,19 @@ article {
 
 .text_excerpt {
 	color: white;
+}
+
+/* .neme3 {
+	color: rgb(241, 192, 103);
+	color: rgba(47, 23, 15, 0.65),
+} */
+
+
+.neme3 {
+    background-color:rgba(47, 23, 15, 0.65),;
+    margin: 10px 10px 10px 10px;
+    color:rgb(241, 192, 103);;
+    /* border-radius: 5px ; */
+	border: white 4px double;
+    padding: 5px;
 }
