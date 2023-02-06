@@ -96,7 +96,7 @@ class Gourmet_searchView(generic.ListView):
             result_list = list(result_set)
             result = Gourmet.objects.filter(id__in=result_list)
         else:
-            result = Gourmet.objects.none()
+            result = Gourmet.objects.all()
         
         params = {
             'gourmet_list' : result,
@@ -124,7 +124,7 @@ class ShopListView(generic.ListView):
     model = Store
 
     def post(self, request):
-        result = Store.objects.none()
+        result = Store.objects.all()
 
         name = request.POST.get("search")
         if name:

@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}検索結果{% endblock %}
+{% block title %}グルメ詳細{% endblock %}
 
 {% block head %}
 <!-- 独自のCSSを使う人はここにCSSのファイルを指定する -->
@@ -18,9 +18,7 @@
         >
         <a href="{% url 'graduation:gourmet' %}">グルメ</a>
         >
-        <a href="{% url 'graduation:gourmet_search' %}">グルメ検索結果</a>
-        >
-        <a href="{% url 'graduation:gourmet_detail' object.pk %}">詳細画面</a>
+        <a href="{% url 'graduation:gourmet_detail' object.pk %}">グルメ詳細画面</a>
     </ol>
 </nav>
 <!-- パンくずリスト -->
@@ -28,7 +26,7 @@
 
 {% block contents %}
 <div>
-    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;">{{ object.name }}</h1>
+    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><font color="white">{{ object.name }}</font></h1>
 
         <div class="hscroll">
             <ul>
@@ -50,10 +48,10 @@
             <span class="arrow right"></span>
         </div>
 
-    <p class="text-primary mb-3 genre_css">ジャンル</p>
-    <h2 class="text-primary mb-3 category_css">{{ object.category }}</h2>
-    <p class="text-primary mb-3 explanation_css">{{ object.explanation }}</p>
-    <div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet_search' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
+    <p class="text-primary mb-3 genre_css"><font color="white">ジャンル</font></p>
+    <h2 class="text-primary mb-3 category_css" style="font-size: 2em;"><font color="white">{{ object.category }}</font></h2>
+    <p class="text-primary mb-3 explanation_css" style="font-size: 2em;"><font color="white">{{ object.explanation }}</font></p>
+    <div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
 </div>
 {% endblock %}
 
