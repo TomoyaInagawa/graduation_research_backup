@@ -10,20 +10,6 @@
 <link href="{% static 'css/gourmet_detail.css' %}" rel="stylesheet" />
 {% endblock %}
 
-{% block bread %}
-<!-- パンくずリスト -->
-<nav>
-    <ol>
-        <a href="{% url 'graduation:index' %}">トップページ</a>
-        >
-        <a href="{% url 'graduation:gourmet' %}">グルメ</a>
-        >
-        <a href="{% url 'graduation:gourmet_detail' object.pk %}">グルメ詳細画面</a>
-    </ol>
-</nav>
-<!-- パンくずリスト -->
-{% endblock %}
-
 {% block contents %}
 <div>
     <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><font color="white">{{ object.name }}</font></h1>

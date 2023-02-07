@@ -9,16 +9,6 @@
 <!-- <link href="{% static 'css/cssファイル' %}" rel="stylesheet" /> -->
 {% endblock %}
 
-{% block bread %}
-<nav>
-    <ol>
-        <a href="{% url 'graduation:index' %}">トップページ</a>
-        >
-        <a href="{% url 'graduation:account' %}">アカウント(会員ページ)</a>
-    </ol>
-</nav>
-{% endblock %}
-
 {% block contents %}
 <!-- ここにページの機能を追加していく -->
 <h1 class="text-primary mb-3" style="margin: 30 auto; text-align:center;">会員ページ</h1>

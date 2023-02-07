@@ -12,20 +12,6 @@
 <!-- <link href="{% static 'css/cssファイル' %}" rel="stylesheet" /> -->
 {% endblock %}
 
-{% block bread %}
-<!-- パンくずリスト -->
-<nav>
-    <ol>
-        <a href="{% url 'graduation:index' %}">トップページ</a>
-        >
-        <a href="{% url 'graduation:gourmet' %}">グルメ</a>
-        >
-        <a href="{% url 'graduation:gourmet_search' %}">グルメ検索結果</a>
-    </ol>
-</nav>
-<!-- パンくずリスト -->
-{% endblock %}
-
 {% block contents %}
 <!-- ここにページの機能を追加していく -->
 <!-- データベースが完成したら、機能を追加してください。 -->

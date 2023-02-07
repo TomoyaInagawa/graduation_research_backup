@@ -69,14 +69,14 @@
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:index' %}">トップページ</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item px-lg-4 dropdown"><a class="nav-link text-uppercase dropdown-toggle" data-toggle="dropdown" href="{% url 'graduation:guide_list' %}">ガイドコース</a>
+                        <li class="nav-item px-lg-4 dropdown"><a class="nav-link text-uppercase dropdown-toggle" data-toggle="dropdown" href="{% url 'graduation:guide_rearch' %}">ガイドコース</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{% url 'graduation:guide_rearch' %}">ガイドコース検索</a>
                             <a class="dropdown-item" href="{% url 'graduation:guide_add' %}">ガイドコース登録</a>
                             <a class="dropdown-item" href="{% url 'graduation:guide_list' %}">ガイドコース一覧</a>
                         </div>
                         {% else %}
-                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:guide_list' %}">ガイドコース</a></li>
+                        <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:guide_rearch' %}">ガイドコース</a></li>
                         {% endif %}
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:gourmet' %}">グルメ</a></li>
                         <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="{% url 'graduation:shop' %}">店</a></li>

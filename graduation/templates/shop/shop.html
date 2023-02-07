@@ -11,18 +11,6 @@
 <link href="{% static 'css/mystyle.css' %}" rel="stylesheet" />
 {% endblock %}
 
-{% block bread %}
-<!-- パンくずリスト -->
-<nav>
-    <ol>
-        <a href="{% url 'graduation:index' %}">トップページ</a>
-        >
-        <a href="{% url 'graduation:shop' %}">店</a>
-    </ol>
-</nav>
-<!-- パンくずリスト -->
-{% endblock %}
-
 {% block contents %}
 
 <form style="margin:10 auto;" action="{% url 'graduation:shop_list' %}" method="post">

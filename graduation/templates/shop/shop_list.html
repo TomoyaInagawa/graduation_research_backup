@@ -9,20 +9,6 @@
 <link href="{% static 'css/shop_list.css' %}" rel="stylesheet" />
 {% endblock %}
 
-{% block bread %}
-<!-- パンくずリスト -->
-<nav>
-    <ol>
-        <a href="{% url 'graduation:index' %}">トップページ</a>
-        >
-        <a href="{% url 'graduation:shop' %}">店</a>
-        >
-        <a href="{% url 'graduation:shop_list' %}">店リスト</a>
-    </ol>
-</nav>
-<!-- パンくずリスト -->
-{% endblock %}
-
 {% block contents %}
 
 <div class="listt">
