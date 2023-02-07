@@ -110,7 +110,7 @@ class TouristArea(models.Model):
 # ガイドコース
 class GuideCourse(models.Model):
     
-    id = models.AutoField(verbose_name='ガイドコースID', max_length=12, primary_key=True)
+    id = models.AutoField(verbose_name='ガイドコースID', primary_key=True)
     title = models.CharField(verbose_name='名称', max_length=50)
     explanation = models.TextField(verbose_name='ガイドコース説明')
     author = models.ForeignKey(CustomUser, verbose_name='作成者', on_delete=models.PROTECT)
