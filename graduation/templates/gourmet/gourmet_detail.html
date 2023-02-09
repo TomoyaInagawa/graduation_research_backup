@@ -12,7 +12,7 @@
 
 {% block contents %}
 <div>
-    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;"><font color="white">{{ object.name }}</font></h1>
+    <h1 align="center" class="text-primary mb-3 style" style="margin: 30 auto;">{{ object.name }}</h1>
 
         <div class="hscroll">
             <ul>
@@ -34,9 +34,9 @@
             <span class="arrow right"></span>
         </div>
 
-    <p class="text-primary mb-3 genre_css"><font color="white">ジャンル</font></p>
-    <h2 class="text-primary mb-3 category_css" style="font-size: 2em;"><font color="white">{{ object.category }}</font></h2>
-    <p class="text-primary mb-3 explanation_css" style="font-size: 1.3em;"><font color="white">{{ object.explanation }}</font></p>
+    <p class="text-primary mb-3 genre_css">ジャンル</p>
+    <h2 class="text-primary mb-3 category_css" style="font-size: 2em;">{{ object.category }}</h2>
+    <p class="text-primary mb-3 explanation_css" style="font-size: 1.3em;">{{ object.explanation }}</p>
     <div style="text-align: center; margin: 30 auto;"><button class="btn btn-secondary btm-x1" style="border:none"><a href="{% url 'graduation:gourmet' %}" style="text-decoration:none;"><b>戻る</b></a></button></div>
 </div>
 {% endblock %}
