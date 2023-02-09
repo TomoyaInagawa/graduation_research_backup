@@ -70,7 +70,7 @@ class Place(models.Model):
     
     id = models.CharField(verbose_name='場所ID', max_length=50, primary_key=True)
     name = models.CharField(verbose_name='名称', max_length=50)
-    explanation = models.TextField(verbose_name='説明')
+    explanation = models.TextField(verbose_name='説明', max_length=140)
     addDateTime = models.DateTimeField(verbose_name='追加日時', auto_now_add=True)
     updateDateTime = models.DateTimeField(verbose_name='更新日時', auto_now=True)
     placeType = models.CharField(verbose_name='場所タイプ',  max_length=100)
@@ -239,7 +239,7 @@ class Gourmet(models.Model):
     
     id = models.CharField(verbose_name='グルメID', max_length=12, primary_key=True)
     name = models.CharField(verbose_name='名称', max_length=50)
-    explanation = models.TextField(verbose_name='グルメ説明', max_length=255)
+    explanation = models.TextField(verbose_name='グルメ説明', max_length=140)
     category = models.ForeignKey(GourmetCategory, verbose_name='カテゴリー', on_delete=models.PROTECT)
     addDateTime = models.DateTimeField(verbose_name='追加日時', auto_now_add=True)
     updateDateTime = models.DateTimeField(verbose_name='更新日時', auto_now=True)

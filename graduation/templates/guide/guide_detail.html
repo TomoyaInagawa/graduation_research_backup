@@ -24,7 +24,7 @@
         <div class="detail_name">{{ guidecourse.start.name }}</div>
         <div class="detail_time">{{ guidecourse.stayTime }}時間{{ guidecourse.stayMinute }}分</div>
         <div class="detail_photo"><img src="{{ guidecourse.picture.url }}"></div>
-        <div class="detail_comment">{{ guidecourse.comment }}</div>
+        <div class="detail_comment" style="font-size: 20px;">{{ guidecourse.comment }}</div>
     </div>
     
     {% for addgc in guidecourse.AddGuideCourse.all %}
@@ -39,7 +39,7 @@
             <div class="detail_name">{{ addgc.arrivalPoint.name }}</div>
             <div class="detail_time">{{ addgc.stayTime }}時間{{ addgc.stayMinute }}分</div>
             <div class="detail_photo"><img src="{{ addgc.picture.url }}"></div>
-            <div class="detail_comment">{{ addgc.comment }}</div>
+            <div class="detail_comment" style="font-size: 20px;">{{ addgc.comment }}</div>
         </div>
     {% endfor %}
     
