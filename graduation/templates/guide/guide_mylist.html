@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースのマイリスト{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<div class="filter">
+    <div class="filter_title bg6">フィルター</div>
+    <div style="margin: 0 5%;" class="bg6">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="filter_subtitle"><button type=submit>ソート</button></div>
+
+            <div class="filter_radio">
+                <input type="radio" value="0" name="sort" checked>
+                    <select name="make_select">
+                        <option value="0" checked>
+                            作成順昇
+                        </option>
+                        <option value="1">
+                            作成順降
+                        </option>
+                    </select>
+            </div>
+
+            <div class="filter_radio" style="border-bottom: 2px solid black;">
+                <input type="radio" value="1" name="sort">
+                    <select name="name_select">
+                        <option value="0" checked>
+                            名前順昇
+                        </option>
+                        <option value="1">
+                            名前順降
+                        </option>
+                    </select>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="list bg6">
+
+    {% for gc in guidecourse_list %}
+    <div class="list_box">
+        <div class="list_name fn5">
+            <a href="{% url 'graduation:guide_detail' gc.pk %}" style="text-decoration: none;">{{ gc.title }}</a>
+        </div>
+        <div class="list_others">
+            <button><a href="{% url 'graduation:guide_delete' gc.pk %}" style="text-decoration: none; color: black;">削除</a></button>
+            作成 {{ gc.addDateTime }}
+        </div>
+    </div>
+    {% empty %}
+    <div class="list_box">
+        <div class="list_name fn5">No Data</div>
+        <div class="list_others">
+            <button>削除</button>
+            作成〇〇月〇〇日
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+<a class="a_button back_button" href="{% url 'graduation:index' %}">戻る</a>
+{% endblock %}
+
