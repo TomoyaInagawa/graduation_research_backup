@@ -31,11 +31,11 @@
                 {% csrf_token %}
                 <label for="chikuname" style="font-size: 30;">飲食店</label>
                 <select name="genre" class="kensaku2">
-                    <option value="洋食">
-                        洋食
-                    </option>
                     <option value="和食">
                         和食
+                    </option>
+                    <option value="洋食">
+                        洋食
                     </option>
                     <option value="中華">
                         中華
@@ -49,7 +49,7 @@
     </div>
 </form>
 <div align="center">
-    <button style="border:none; margin: 50 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:index' %}" style="text-decoration:none;"><b>戻る</b></a></button>
+    <a href="{% url 'graduation:index' %}" style="text-decoration:none;"><button style="border:none; margin: 50 auto;" class="btn btn-secondary btm-x1"><b>戻る</b></button></a>
 </div>
 {% endblock %}
 

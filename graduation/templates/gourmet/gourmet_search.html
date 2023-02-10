@@ -18,6 +18,7 @@
 <div class="archive">
 {% for gourmet in gourmet_list %}
             <div class="archive2">
+              <a href="{% url 'graduation:gourmet_detail' gourmet.pk %}">
                     <img src="{{ gourmet.pic1.url }}" width="390" height="200"></img>
                     <h2 class="post-title">
                         <a class="gourmet_name" href="{% url 'graduation:gourmet_detail' gourmet.pk %}">{{ gourmet.name }}</a>
@@ -27,6 +28,7 @@
                     <img src="{% static 'assets/img/fork_knife.png' %}" style="width:50px;">
                     {{ gourmet.category }}
                     </div>
+              </a>
             </div>
             <!-- <hr class="my-4"> -->
             {% empty %}
@@ -36,7 +38,7 @@
 
 <br>
 <div align="center">
-    <button style="border:none; margin: 10 auto;" class="btn btn-secondary btm-x1"><a href="{% url 'graduation:gourmet' %}" style="text-decoration:none;"><b>戻る</b></a></button>
+    <a href="{% url 'graduation:gourmet' %}" style="text-decoration:none;"><button style="border:none; margin: 10 auto;" class="btn btn-secondary btm-x1"><b>戻る</b></button></a>
 </div>
 <!-- {% include 'pagination.html' %} -->
 {% endblock %}
