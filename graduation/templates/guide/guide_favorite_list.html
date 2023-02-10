@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}ふらっとナビ/ガイドコースのお気に入り{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/guide_style.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block contents %}
+<div class="filter">
+    <div class="filter_title bg6">フィルター</div>
+    <div style="margin: 0 5%;" class="bg6">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="filter_search">
+                <input type="radio" value="search" name="sort">
+                <input type="search" name="name" class="filter_search_box">
+            </div>
+
+            <div class="filter_subtitle">
+                <div class="filter_subtitle sort_radius">
+                    <button type=submit>ソート</button>
+                </div>
+            </div>
+
+            <div class="filter_radio" style="border-bottom: 2px solid black;">
+                <div style="font-size: 2vmin;">
+                    <input type="radio" value="register" name="sort">
+                    登録順
+                </div>
+
+                <div>
+                    <input type="radio" value="name" name="sort">
+                    名前順
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="list bg6">
+    {% for favorite in object_list %}
+    <div class="list_box">
+        <div class="list_name fn5" style="width: 90%;"><a href="{% url 'graduation:guide_favorite2' favorite.guideCourse.pk %}" style="text-decoration: none;">{{favorite.guideCourse.title}}</a></div>
+        <div style="padding-top: 5%;">
+            {% if favorite %}
+                <button class="favorite_button bgy"><a href="{% url 'graduation:guide_favorite2' favorite.guideCourse.pk %}" style="text-decoration: none;">☆</a></button>
+            {% else %}
+                <button class="favorite_button bgw"><a href="{% url 'graduation:guide_favorite2' favorite.guideCourse.pk %}" style="text-decoration: none;">☆</a></button>
+            {% endif %}
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="list_box">
+        <div class="list_name fn5" style="width: 90%;">NoData</div>
+        <button class="favorite_button bgw">☆</button>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<a class="a_button back_button" href="{% url 'graduation:index' %}">戻る</a>
+{% endblock %}
+
