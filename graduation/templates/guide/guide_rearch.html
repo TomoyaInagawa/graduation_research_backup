@@ -94,7 +94,8 @@
         </div>
     </div>
 
-    <input type="submit" name="button" value="検索" class="a_button back_button">
+    <div align="right"><input type="submit" name="button" value="検索" class="btn btn-secondary mb-3" style="width: 7em; height:4em; font-weight: bold;"></div>
 </form>
+<a href="{% url 'graduation:index' %}"><div align="right"><button class="btn btn-secondary mb-3" style="border:none; width:7em; height:4em; margin: 10 auto;" type="submit"><b>戻る</b></button></div></a>
 {% endblock %}
 
