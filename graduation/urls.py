@@ -30,7 +30,4 @@ urlpatterns = [
     path('favorite2/<slug:pk>', views.Guide_favorite2View, name="guide_favorite2"),
     path('place/<slug:pk>', views.Guide_place_favoriteView, name="guide_place_favorite"),
 
-    # 利用規約
-    path('user-signup/terms_of_service/', views.Terms_of_serviceView.as_view(), name="terms_of_service"),
-
 ]

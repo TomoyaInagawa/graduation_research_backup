@@ -34,18 +34,7 @@ $("form").garlic();
                 {% if redirect_field_value %}
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
                 {% endif %}
-
-                <div class="terms_of_service">
-                    <a href="{% url 'graduation:terms_of_service'%}" >ふらっとナビ利用規約を同意したうえで登録ボタンを押してください</a>
-                    <p style="margin: 30 auto;">※郵便番号・住所・年齢・性別は入力後修正することができません!!</p>
-                    <div id="form" style="margin: 50 auto;">
-                        <input type="checkbox" v-model="checkAgree">
-                        <label>
-                            同意します。
-                        </label>
-                        <button v-bind:disabled="checkAgree==false" class="btn btn-primary" type="submit" >登録</button>
-                    </div>
-                </div>
+                    <div align="center"><button v-bind:disabled="checkAgree==false" class="btn btn-primary" type="submit" style="width:100px; font-weight: bold;">登録</button></div>
             </form>
         </div>
     </div>
