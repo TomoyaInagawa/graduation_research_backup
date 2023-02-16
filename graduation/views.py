@@ -492,6 +492,3 @@ class Guide_place_detailView(generic.DetailView):
 class Shop_detailView(generic.DetailView):
     model = Store
     template_name = "shop/shop_shosai.html"
-# 利用規約
-class Terms_of_serviceView(generic.TemplateView):
-    template_name = "terms_of_service.html"
